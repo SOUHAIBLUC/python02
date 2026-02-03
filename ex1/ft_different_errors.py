@@ -50,21 +50,46 @@ def test_error_types() -> None:
     # Testing multiple errors together
     print("\nTesting multiple errors together...")
     
+def op_value_error():
+    int("not_a_number")
+
+
+def op_zero_division():
+    5 / 0
+
+
+def op_file_not_found():
+    open("nonexistent.txt", "r")
+
+
+def op_key_error():
+    {"key": "value"}["missing"]
+
+
+def test_error_types() -> None:
+    """
+    Tests different error types and demonstrates catching multiple errors.
+    """
+    garden_operations()
+
+    print("\nTesting multiple errors together...")
+
     test_operations = [
-        lambda: int("not_a_number"),
-        lambda: 5 / 0,
-        lambda: open("nonexistent.txt", "r"),
-        lambda: {"key": "value"}["missing"]
+        op_value_error,
+        op_zero_division,
+        op_file_not_found,
+        op_key_error
     ]
-    
+
     for operation in test_operations:
         try:
             operation()
         except (ValueError, ZeroDivisionError, FileNotFoundError, KeyError):
             print("Caught an error, but program continues!")
-    
+
     print("\nAll error types tested successfully!")
 
 
 if __name__ == "__main__":
     test_error_types()
+
