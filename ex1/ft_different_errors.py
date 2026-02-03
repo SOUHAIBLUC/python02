@@ -1,7 +1,4 @@
-"""
-Exercise 1: Different Types of Problems
-Demonstrates handling different exception types
-"""
+
 
 
 def garden_operations() -> None:
